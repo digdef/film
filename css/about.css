@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Suez+One');
+body{
+  background-color: #edeef0;
+}
+a{
+  text-decoration: none;
+}
+input {
+  outline:none;
+}
+/*Шапка*/
+nav{
+  background-color: #323232;
+}
+nav #logo{
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+}
+nav #logo span{
+  text-decoration: none;
+  font-size: 1.7em;
+  line-height: 45px;
+  margin-left: 40px;
+  font-family: 'Suez One', serif;
+}
+
+#faq{
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+@media (min-width: 801px) {
+  #faq {
+    width: 100%;
+    float: left;
+  }
+  #faq div {
+    width: 25%;
+    margin-left: 6%;
+    float: left;
+  }
+}
+
+@media (max-width: 800px) {
+  #faq div {
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+  }
+}
+
+@media (max-width: 700px){
+  #faq{
+    visibility: hidden;
+    display: none;
+  }
+}
+
+#faq .title {
+  font-weight: lighter;
+  color: #a3a0ad;
+  margin-bottom: 20px;
+  font-size: 2.2em;
+}
+
+#faq .heading {
+  color: #7d7d7d;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+#faq p {
+  font-family: Arimo, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #4a4a4a;
+  font-size: 0.95em;
+  margin-bottom: 40px;
+}
+/*Search*/
+.search-box{
+  background: #2f3640;
+  height: 40px;
+  border-radius: 40px;
+  padding: 15px;
+}
+.search-box:hover > .search-txt{
+  width: 240px;
+}
+.search-box:hover > .search-btn{
+  background: white;
+}
+.search-btn{
+  color: #e84118;
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin: -10px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-txt{
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  margin: -6px;
+  width: 0px;
+}
