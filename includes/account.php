@@ -48,7 +48,7 @@ session_start();?>
 	<div id="main">
 		<article style="display: inline-block;">
 			<div class="avatar">
-				<img style="min-width: 210" id="index_img"  src="../1.jpg"></p>
+				<img style="min-width: 210" id="index_img"  src="../img/1.jpg"></p>
 				<button class="btn btn-primary" name="name" data-toggle="modal" data-target="#exampleModal">
 					Изменить Аватрар
 				</button>
@@ -71,8 +71,9 @@ session_start();?>
 					
 					<form class="box-settings" action="account.php" method="POST">
 						<h2>Настройки</h2>
-						<input type="text" name="name" placeholder="Изменить Имя" value="<?php echo @$data['name'] ?>">  
-						<input type="password" name="password" placeholder="Изменить Пароль" value="<?php echo @$data['password'] ?>">
+						<input type="text" name="name" placeholder="Изменить Имя" value="<?php echo @$data['name'] ?>"> 
+						<input type="password" name="password" placeholder="Изменить Пароль" value="<?php echo @$data['password'] ?>"> 
+						<input type="email" name="email" placeholder="Изменить Email" value="<?php echo @$data['email'] ?>">
 						<input type="password" name="password_2" placeholder="Подтвердите Пароль" value="<?php echo @$data['password_2'] ?>"><br>
 						<input class="btn btn-primary" type="submit" name="do_signup" value="Изменить">
 					</form>	

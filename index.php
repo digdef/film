@@ -57,19 +57,19 @@ require"config.php";
 						<div class="container p-5">
 							<div class="card-deck">
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">1</a></h3>
 									</div>
 								</div>
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">2</a></h3>
 									</div>
 								</div>
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">3</a></h3>
 									</div>
@@ -83,19 +83,19 @@ require"config.php";
 						<div class="container p-5">
 							<div class="card-deck">
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">4</a></h3>
 									</div>
 								</div>
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">5</a></h3>
 									</div>
 								</div>
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">6</a></h3>
 									</div>
@@ -109,19 +109,19 @@ require"config.php";
 						<div class="container p-5">
 							<div class="card-deck">
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">7</a></h3>
 									</div>
 								</div>
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">8</a></h3>
 									</div>
 								</div>
 								<div class="card text-center" style="width: 20rem">
-									<img src="1.jpg" class="card-img-top">
+									<img src="img/1.jpg" class="card-img-top">
 									<div class="card-body">
 										<h3 class="card-title"><a id="link" href="#">9</a></h3>
 									</div>

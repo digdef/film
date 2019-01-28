@@ -83,7 +83,9 @@ require"config.php";
 		<div class="text">
 			<span>
 				Дата выхода: 
-				<?php echo $art['date']; ?> 
+				<?php echo $art['date']; ?><br>
+				Жанр:
+				<?php echo $art['genre']; ?> 
 			</span>
 		</div>
 	</article>
