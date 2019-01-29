@@ -18,3 +18,4 @@ $connection = mysqli_connect(
 
 require 'lib/rb.php';
 R::setup( 'mysql:host=localhost;dbname=film','root', '' );
+dzsgvsf

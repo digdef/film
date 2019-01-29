@@ -103,17 +103,6 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div style="margin-left: 5%" class="collapse navbar-collapse " id="navbarSupportedContent">
-			<ul class="navbar-nav " id="about">
-				<li class="nav-item ">
-					<a href="index.php" class="nav-link">Главная</a>
-				</li>
-				<li class="nav-item">
-					<a href="includes/account.php" class="nav-link">Аккаунт</a>
-				</li>
-				<li class="nav-item">
-					<a href="index.php" class="nav-link">Поиск</a>
-				</li>
-			</ul>
 			<div class=" mx-auto"></div>
 			<div class="search-box ">
 				<input class="search-txt" type="text" name="" placeholder="Type ro search">
