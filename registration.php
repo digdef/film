@@ -113,8 +113,8 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 		</div>
 	</nav>
 
-	<div id="box_c" class="box">
-		<form  action="registration.php" method="POST"> 
+	<div id="box_registration" class="box">
+		<form action="registration.php" method="POST"> 
 			<h1>Вход</h1>
 			<input required="" type="text" name="login" placeholder="Логин">
 			<input required="" type="password" name="password" placeholder="Пароль">
@@ -123,21 +123,24 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 				Запомнить <input name='remember' type='checkbox' value='1'>
 			</div>
 		</form>
-		<input id="c" type="submit" value="Регистрация" data-toggle="modal" data-target="#exampleModal">
+		<input id="btn" type="submit" value="Регистрация" data-toggle="modal" data-target="#exampleModal">
 	</div>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
-				<form  class="box" action="registration.php" method="POST">
-					<h1>Регистрация</h1>
-					<input required="Введите Логин" type="text" name="login" placeholder="Ваш Логин" value="<?php echo @$data['login'] ?>">
-					<input required="Введите Имя" type="text" name="name" placeholder="Ваше Имя" value="<?php echo @$data['name'] ?>">
-					<input required="Введите Email" type="email" name="email" placeholder="Ваш Email" value="<?php echo @$data['email'] ?>">    
-					<input minlength="7" required="Введите Пароль" type="password" name="password" placeholder="Пароль" value="<?php echo @$data['password'] ?>">
-					<input minlength="7" required="Подтвердите Пароль" type="password" name="password_2" placeholder="Подтвердите Пароль" value="<?php echo @$data['password_2'] ?>">
-					<input type="submit" name="do_signup" value="Регистрация">
-				</form>
+				<div>
+					<form  class="box" action="registration.php" method="POST">
+						<h1>Регистрация</h1>
+						<input required="Введите Логин" type="text" name="login" placeholder="Ваш Логин" value="<?php echo @$data['login'] ?>">
+						<input required="Введите Имя" type="text" name="name" placeholder="Ваше Имя" value="<?php echo @$data['name'] ?>">
+						<input required="Введите Email" type="email" name="email" placeholder="Ваш Email" value="<?php echo @$data['email'] ?>">    
+						<input minlength="7" required="Введите Пароль" type="password" name="password" placeholder="Пароль" value="<?php echo @$data['password'] ?>">
+						<input minlength="7" required="Подтвердите Пароль" type="password" name="password_2" placeholder="Подтвердите Пароль" value="<?php echo @$data['password_2'] ?>">
+						<input type="submit" name="do_signup" value="Регистрация">
+					</form>	
+				</div>
+				
 			</div>
 		</div>
 	</div>

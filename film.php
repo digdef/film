@@ -45,7 +45,7 @@ require"config.php";
 		<div class="intro">
 			<img  id="index_img"  src="img/<?php echo $art['img'];?>" ></p>
 			<div>
-				<button style="margin: 0px;" id="c">Посмотреть</button>
+				<button style="margin: 0px;" id="btn">Посмотреть</button>
 			</div>
 		</div>		    		
 		<div class="text">

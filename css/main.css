@@ -165,7 +165,7 @@ nav #logo span{
 	background: #2ecc71;
 	border-color: #2ecc71;
 }
-#c{
+#btn{
 	font-size: 20px;
 	position: relative;
 	text-decoration: none;
@@ -181,7 +181,7 @@ nav #logo span{
 	transition: 0.25s;
 	cursor: pointer;
 }
-#c:hover {
+#btn:hover {
 	background: #3498db;
 	border-color: #3498db;
 	color: white;
@@ -200,9 +200,10 @@ nav #logo span{
 	position: relative;
 	z-index: 2;
 }
-#box_c{
+#box_registration{
 	position: relative;
-	margin:10% auto;
+	margin:9% auto;
+	margin-bottom: 0%;
 	text-align: center;
 	padding: 14px 40px;
 	z-index: 1;
@@ -224,6 +225,7 @@ nav #logo span{
 .box-settings input[type = "text"]:focus, .box-settings input[type = "password"]:focus, .box-settings input[type="email"]:focus {
 	border-color: #2ecc71;
 }
+
 
 /* Блок с новостями */
 
