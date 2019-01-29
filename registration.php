@@ -130,7 +130,7 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
 				<div>
-					<form  class="box" action="registration.php" method="POST">
+					<form id="brm" class="box" action="registration.php" method="POST">
 						<h1>Регистрация</h1>
 						<input required="Введите Логин" type="text" name="login" placeholder="Ваш Логин" value="<?php echo @$data['login'] ?>">
 						<input required="Введите Имя" type="text" name="name" placeholder="Ваше Имя" value="<?php echo @$data['name'] ?>">
@@ -139,8 +139,7 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 						<input minlength="7" required="Подтвердите Пароль" type="password" name="password_2" placeholder="Подтвердите Пароль" value="<?php echo @$data['password_2'] ?>">
 						<input type="submit" name="do_signup" value="Регистрация">
 					</form>	
-				</div>
-				
+				</div>			
 			</div>
 		</div>
 	</div>
