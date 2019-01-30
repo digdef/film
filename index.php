@@ -17,12 +17,12 @@ require"config.php";
 	<?php
 	require"includes/header.php";
 	?>
-	<div style="background-color: #24344f" class="container-fluid">
+	<div id="carousel" style="background-color: #24344f" class="container-fluid">
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
-				<li class="active" data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				<li class="active" data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
@@ -109,6 +109,70 @@ require"config.php";
 				<span class="sr-only">Previous</span>
 			</a>
 			<a href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">next</span>
+			</a>
+		</div>
+	</div>
+
+	<div id="carousel2" style="background-color: #24344f" class="container-fluid">
+		<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="0"></li>
+				<li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="container-fluid ">
+						<div class="container p-5">
+							<div class="card-deck">
+								<div class="card text-center">
+									<img src="img/1.jpg" class="card-img-top">
+									<div class="card-body">
+										<h3 class="card-title"><a id="link" href="#">1</a></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="container-fluid ">
+						<div class="container p-5">
+							<div class="card-deck">
+								<div class="card text-center">
+									<img src="img/1.jpg" class="card-img-top">
+									<div class="card-body">
+										<h3 class="card-title"><a id="link" href="#">2</a></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="container-fluid ">
+						<div class="container p-5">
+							<div class="card-deck">
+								<div class="card text-center">
+									<img src="img/1.jpg" class="card-img-top">
+									<div class="card-body">
+										<h3 class="card-title"><a id="link" href="#">3</a></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#carouselExampleIndicators1" class="carousel-control-prev" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a href="#carouselExampleIndicators1" class="carousel-control-next" role="button" data-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">next</span>
 			</a>
