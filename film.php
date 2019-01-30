@@ -35,12 +35,12 @@ require"config.php";
 	<center>
 		<h2 class="p-5"><?php echo $art['title']; ?></h2>
 	</center>
-	<div class="container p-5">
+	<div class="container p-1">
 		<div class="embed-responsive embed-responsive-16by9">
 			<iframe src="<?php echo $art['trailer']; ?>" class="embed-responsive-item" allowfullscreen></iframe>
 		</div>
 	</div>
-	<div id="main">
+	<div style="padding-top: 2%" id="main">
 	<article style="display: inline-block;">
 		<div class="intro">
 			<img  id="index_img"  src="img/<?php echo $art['img'];?>" ></p>
