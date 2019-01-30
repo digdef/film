@@ -275,14 +275,14 @@ nav #logo span{
 }
 
 @media (max-width: 575px){
-  #carousel{
-    visibility: hidden;
-    display: none;
-  }
+	#carousel{
+		visibility: hidden;
+		display: none;
+	}
 }
 @media (min-width: 576px){
-  #carousel2{
-    visibility: hidden;
-    display: none;
-  }
+	#carousel2{
+		visibility: hidden;
+		display: none;
+	}
 }

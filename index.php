@@ -226,7 +226,7 @@ require"config.php";
 	<center>
 				<?php
 				echo $pervpage.$page2left.$page1left.'<b style="font-size: 26px;color: #515966;">'.$page.'</b>'.$page1right.$page2right.$nextpage;
-			?>
+				?>
 	</center>
 	<footer id="faq">
 		<div>

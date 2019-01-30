@@ -16,15 +16,16 @@
 				<a href="account.php" class="nav-link">Аккаунт</a>
 			</li>
 			<li class="nav-item">
-				<a href="index.php" class="nav-link">Поиск</a>
+				<a href="search.php" class="nav-link">Поиск</a>
 			</li>
 		</ul>
 		<div class=" mx-auto"></div>
-		<div class="search-box ">
-			<input class="search-txt" type="text" name="" placeholder="Type ro search">
-			<a class="search-btn" href="#">
+		<form class="search-box " name="search" method="post" action="search.php">
+			<input class="search-txt" type="search" name="query" placeholder="Type ro search">
+			<button type="submit" class="search-btn btn btn-link">
 				<i class="fas fa-search"></i>
-			</a>
-		</div>
+			</button> 
+			
+		</form>
 	</div>
 </nav>
