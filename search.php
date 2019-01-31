@@ -40,20 +40,21 @@ require"config.php";
 					} else {
 						$array[] = "CONCAT (`title_search`) LIKE '%$key%'";
 					}
+					if ($i == $count) {
+						$array[] = 'Ничего не найдено';
+					}
 				}
-				
+
 				$sql = "SELECT * FROM `film` WHERE ".implode(" ", $array);
 				$query = mysqli_query($connection, $sql);
 
 				while ($row = mysqli_fetch_assoc($query)){ ?>
-
 					<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
 						<img src="img/<?php echo $row['img'];?>" class="w-100">
 						<h3><a href="film.php?id=<?php echo $row['id'];?>" id="link"><?php echo $row['title']; ?></a></h3>
 					</div>
-
 				<?php				
-				};
+				}
 			}
 			?>
 			</div>
