@@ -203,10 +203,10 @@ require"config.php";
 		<div class="container-fluid" id="content">
 			<div class="row text-center ">
 			<?php 
-				while ($art = mysqli_fetch_assoc($film)){ ?>
+				while ($mov = mysqli_fetch_assoc($film)){ ?>
 				<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
-					<img src="img/<?php echo $art['img'];?>" class="w-100">
-					<h3><a href="film.php?id=<?php echo $art['id'];?>" id="link"><?php echo $art['title']; ?></a></h3>
+					<img src="img/<?php echo $mov['img'];?>" class="w-100">
+					<h3><a href="film.php?id=<?php echo $mov['id'];?>" id="link"><?php echo $mov['title']; ?></a></h3>
 				</div>
 			<?php } ?>
 			</div>

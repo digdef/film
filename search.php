@@ -16,30 +16,48 @@ require"config.php";
 <body>
 	<?php
 	require"includes/header.php";
-
-
-	if (isset($_POST['submit'])) {
-		$search = $_POST['search'];
-		$search = trim($search);
-		$search = strip_tags($search);
-		$search = mysqli_real_escape_string($connection, $search);
-		$search = explode(" ", $search);
-
-		$count = count($search);
-		$array = array();
-		$i = 0;
-		foreach ($search as $key) {
-			$i++;
-			if ($i < $count)  {
-				$array[] = "CONCAT (`title_search`) LIKE '%$key%' OR";
-			} else {
-				$array[] = "CONCAT (`title_search`) LIKE '%$key%'";
-			}
-		}
-		$sql = "SELECT * FROM `film` WHERE ".implode(" ", $array);
-		$query = mysqli_query($connection, $sql);
-		while ($row = mysqli_fetch_assoc($query)) echo"<h1>".$row['title']."</h1>";	
-	}
 	?>
+	<div style="padding-top: 20px">
+		<div class="container-fluid" id="content">
+			<div class="row text-center ">	
+			<?php
+			if (isset($_POST['submit'])) {
+
+				$search = $_POST['search'];
+				$search = trim($search);
+				$search = strip_tags($search);
+				$search = mysqli_real_escape_string($connection, $search);
+				$search = explode(" ", $search);
+
+				$count = count($search);
+				$array = array();
+				$i = 0;
+
+				foreach ($search as $key) {
+					$i++;
+					if ($i < $count)  {
+						$array[] = "CONCAT (`title_search`) LIKE '%$key%' OR";
+					} else {
+						$array[] = "CONCAT (`title_search`) LIKE '%$key%'";
+					}
+				}
+				
+				$sql = "SELECT * FROM `film` WHERE ".implode(" ", $array);
+				$query = mysqli_query($connection, $sql);
+
+				while ($row = mysqli_fetch_assoc($query)){ ?>
+
+					<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
+						<img src="img/<?php echo $row['img'];?>" class="w-100">
+						<h3><a href="film.php?id=<?php echo $row['id'];?>" id="link"><?php echo $row['title']; ?></a></h3>
+					</div>
+
+				<?php				
+				};
+			}
+			?>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>
