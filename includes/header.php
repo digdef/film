@@ -21,11 +21,10 @@
 		</ul>
 		<div class=" mx-auto"></div>
 		<form class="search-box " name="search" method="post" action="search.php">
-			<input class="search-txt" type="search" name="query" placeholder="Type ro search">
-			<button type="submit" class="search-btn btn btn-link">
+			<input class="search-txt" type="search" name="search" placeholder="Type ro search">
+			<button name="submit" type="submit" class="search-btn btn btn-link">
 				<i class="fas fa-search"></i>
 			</button> 
-			
 		</form>
 	</div>
 </nav>
