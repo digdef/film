@@ -16,16 +16,21 @@ session_start();?>
 <body>
 	<?php
 	require"includes/header.php";
+
+	$name=$_SESSION['login'];
+	$res=mysqli_query($connection,"SELECT * FROM `users` WHERE `login`='$name' ");
+	$user_data=mysqli_fetch_array($res);
+
 	?>
 	<div style="padding-top: 1%"></div>
 	<div id="main">
 		<article style="display: inline-block;">
 			<div class="avatar">
-				<img style="min-width: 210" id="index_img"  src="img/1.jpg"></p>
+				<img style="min-width: 210" id="index_img"  src="img/avatar/<?php echo $user_data['avatar'];?>"></p>
 				<button class="btn btn-primary" name="name" data-toggle="modal" data-target="#exampleModal">
 					Изменить Аватрар
 				</button>
-				<a class="btn btn-primary" href='exit.php'>
+				<a class="btn btn-primary" href='includes\exit.php'>
 					<i class="fas fa-sign-out-alt"></i>
 				</a></p>
 				<input class="btn btn-primary" type="submit" name="do_signup" value="Подписки" data-toggle="modal" data-target="#exampleModal2">
@@ -33,9 +38,6 @@ session_start();?>
 			<div class="text">
 				<span id="name">
 					<?php
-					$name=$_SESSION['login'];
-					$res=mysqli_query($connection,"SELECT * FROM `users` WHERE `login`='$name' ");
-					$user_data=mysqli_fetch_array($res);
 					echo $user_data['name']."<br>";
 					echo "Почта: ". $user_data['email']."<br>";
 					?>
@@ -59,9 +61,9 @@ session_start();?>
 				<form action="account.php" method="POST">
 					<h1>Изменить Аватар</h1>
 					<p>
-						<input style="max-width: 200px"  type="image" name="" src="img/1.jpg">
-						<input style="max-width: 200px"  type="image" name="" src="img/1.jpg">
-						<input style="max-width: 200px"  type="image" name="" src="img/1.jpg">
+						<input style="max-width: 200px"  type="image" name="" src="img/avatar/avatar1.png">
+						<input style="max-width: 200px"  type="image" name="" src="img/avatar/avatar2.png">
+						<input style="max-width: 200px"  type="image" name="" src="img/avatar/avatar3.png">
 					</p>
 					<input type="submit" name="do_signup" value="Изменить">
 				</form>
