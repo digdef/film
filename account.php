@@ -1,6 +1,7 @@
 <?php
 require"config.php";
-session_start();?>
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,19 +15,32 @@ session_start();?>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
-	<?php
+	<?
 	require"includes/header.php";
 
 	$name=$_SESSION['login'];
+	$id=$_SESSION['id'];
 	$res=mysqli_query($connection,"SELECT * FROM `users` WHERE `login`='$name' ");
 	$user_data=mysqli_fetch_array($res);
+
+	$subscriptions=mysqli_query($connection,"SELECT * FROM `subs` WHERE `subscriber`='$name' ");
+
+	if (isset($_POST['do_avatar1'])) {
+		mysqli_query($connection, "UPDATE `users` SET `avatar` = 'avatar1.png' WHERE `users`.`id` ='$id' ");	
+	}
+	if (isset($_POST['do_avatar2'])) {
+		mysqli_query($connection, "UPDATE `users` SET `avatar` = 'avatar2.png' WHERE `users`.`id` ='$id' ");	
+	}
+	if (isset($_POST['do_avatar3'])) {
+		mysqli_query($connection, "UPDATE `users` SET `avatar` = 'avatar3.png' WHERE `users`.`id` ='$id' ");	
+	}
 
 	?>
 	<div style="padding-top: 1%"></div>
 	<div id="main">
 		<article style="display: inline-block;">
 			<div class="avatar">
-				<img style="min-width: 210" id="index_img"  src="img/avatar/<?php echo $user_data['avatar'];?>"></p>
+				<img style="min-width: 210" id="index_img"  src="img/avatar/<? echo $user_data['avatar'];?>"></p>
 				<button class="btn btn-primary" name="name" data-toggle="modal" data-target="#exampleModal">
 					Изменить Аватрар
 				</button>
@@ -37,7 +51,7 @@ session_start();?>
 			</div>		    		
 			<div class="text">
 				<span id="name">
-					<?php
+					<?
 					echo $user_data['name']."<br>";
 					echo "Почта: ". $user_data['email']."<br>";
 					?>
@@ -45,10 +59,10 @@ session_start();?>
 				<div >
                     <form class="box-settings" action="account.php" method="POST">
 						<h2>Настройки</h2>
-						<input type="text" name="name" placeholder="Изменить Имя" value="<?php echo @$data['name'] ?>"> 
-						<input type="password" name="password" placeholder="Изменить Пароль" value="<?php echo @$data['password'] ?>"> 
-						<input type="email" name="email" placeholder="Изменить Email" value="<?php echo @$data['email'] ?>">
-						<input type="password" name="password_2" placeholder="Подтвердите Пароль" value="<?php echo @$data['password_2'] ?>"><br>
+						<input type="text" name="name" placeholder="Изменить Имя" value="<? echo @$data['name'] ?>"> 
+						<input type="password" name="password" placeholder="Изменить Пароль" value="<? echo @$data['password'] ?>"> 
+						<input type="email" name="email" placeholder="Изменить Email" value="<? echo @$data['email'] ?>">
+						<input type="password" name="password_2" placeholder="Подтвердите Пароль" value="<? echo @$data['password_2'] ?>"><br>
 						<input class="btn btn-primary" type="submit" name="do_signup" value="Изменить">
 					</form>	
 				</div>	
@@ -58,14 +72,19 @@ session_start();?>
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-				<form action="account.php" method="POST">
+				<form id="brm" class="box" action="account.php" method="POST">
 					<h1>Изменить Аватар</h1>
 					<p>
-						<input style="max-width: 200px"  type="image" name="" src="img/avatar/avatar1.png">
-						<input style="max-width: 200px"  type="image" name="" src="img/avatar/avatar2.png">
-						<input style="max-width: 200px"  type="image" name="" src="img/avatar/avatar3.png">
+						<button class="btn btn-link" type="submit" name="do_avatar1">
+							<img style="max-width: 200px" src="img/avatar/avatar1.png">
+						</button>
+						<button class="btn btn-link" type="submit" name="do_avatar2">
+							<img style="max-width: 200px" src="img/avatar/avatar2.png">
+						</button>
+						<button class="btn btn-link" type="submit" name="do_avatar3">
+							<img style="max-width: 200px" src="img/avatar/avatar3.png">
+						</button>
 					</p>
-					<input type="submit" name="do_signup" value="Изменить">
 				</form>
 			</div>
 		</div>
@@ -73,9 +92,16 @@ session_start();?>
 	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2" aria-hidden="true">
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
-				<form  class="box" action="account.php" method="POST">
+				<form id="brm" class="box" action="account.php" method="POST">
 					<h1>Подписки</h1>
-					<a href="">Срань</a>
+					<?
+					while ($sub=mysqli_fetch_array($subscriptions)){ 
+					$sub1=$sub['subscription'];			
+					$film = mysqli_query($connection, "SELECT * FROM `film` WHERE `title`='$sub1' ORDER BY `id`");
+					$mov = mysqli_fetch_assoc($film);
+					?>
+						<a href="film.php?id=<?php echo $mov['id'];?>"><? echo $sub['subscription']?></a><br>
+					<? } ?>
 				</form>
 			</div>
 		</div>
