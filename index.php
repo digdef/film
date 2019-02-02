@@ -16,123 +16,103 @@ require"config.php";
 <body>
 	<?php
 	require"includes/header.php";
-	?>
-	<div id="carousel" style="background-color: #24344f" class="container-fluid">
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">1</a></h3>
-									</div>
-								</div>
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">2</a></h3>
-									</div>
-								</div>
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">3</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item ">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">4</a></h3>
-									</div>
-								</div>
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">5</a></h3>
-									</div>
-								</div>
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">6</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item ">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">7</a></h3>
-									</div>
-								</div>
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">8</a></h3>
-									</div>
-								</div>
-								<div class="card text-center" style="width: 20rem">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">9</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a href="#carouselExampleIndicators" class="carousel-control-prev" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">next</span>
-			</a>
-		</div>
-	</div>
-
+$result = mysqli_query($connection, "SELECT * FROM slider LIMIT 9");
+$carousel = array();
+while ($r = $result->fetch_assoc()) {
+    $carousel[] = $r;
+}
+?>
+<div id="carousel" style="background-color: #24344f" class="container-fluid">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container-fluid ">
+                    <div class="container p-5">
+                        <div class="card-deck">
+                            <?
+                            for ($i = 0; $i < 3; $i++) {
+                                echo '<div class="card text-center">
+									<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+								</div>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <div class="container-fluid ">
+                    <div class="container p-5">
+                        <div class="card-deck">
+                            <?
+                            for ($i = 3; $i < 6; $i++) {
+                                echo '<div class="card text-center">
+									<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+								</div>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <div class="container-fluid ">
+                    <div class="container p-5">
+                        <div class="card-deck">
+                            <?
+                            for ($i = 6; $i < 9; $i++) {
+                                echo '<div class="card text-center" >
+									<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+								</div>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#carouselExampleIndicators" class="carousel-control-prev" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">next</span>
+        </a>
+    </div>
+</div>
+<?
+while ($r = $result->fetch_assoc()) {
+    $carousel[] = $r;
+}?>
 	<div id="carousel2" style="background-color: #24344f" class="container-fluid">
 		<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="0"></li>
 				<li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
 				<li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+				<li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+				<li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
+				<li data-target="#carouselExampleIndicators1" data-slide-to="5"></li>
+
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<div class="container-fluid ">
 						<div class="container p-5">
 							<div class="card-deck">
-								<div class="card text-center">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">1</a></h3>
-									</div>
-								</div>
+								<?
+	                            for ($i = 0; $i < 1;) {
+	                                echo '<div class="card text-center">
+										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+									</div>';
+	                            }
+	                            ?>
 							</div>
 						</div>
 					</div>
@@ -142,12 +122,13 @@ require"config.php";
 					<div class="container-fluid ">
 						<div class="container p-5">
 							<div class="card-deck">
-								<div class="card text-center">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">2</a></h3>
-									</div>
-								</div>
+								<?
+	                            for ($i = 1; $i < 1;) {
+	                                echo '<div class="card text-center">
+										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+									</div>';
+	                            }
+	                            ?>
 							</div>
 						</div>
 					</div>
@@ -157,12 +138,61 @@ require"config.php";
 					<div class="container-fluid ">
 						<div class="container p-5">
 							<div class="card-deck">
-								<div class="card text-center">
-									<img src="img/1.jpg" class="card-img-top">
-									<div class="card-body">
-										<h3 class="card-title"><a id="link" href="#">3</a></h3>
-									</div>
-								</div>
+								<?
+	                            for ($i = 2; $i < 1;) {
+	                                echo '<div class="card text-center">
+										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+									</div>';
+	                            }
+	                            ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="container-fluid ">
+						<div class="container p-5">
+							<div class="card-deck">
+								<?
+	                            for ($i = 3; $i < 1;) {
+	                                echo '<div class="card text-center">
+										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+									</div>';
+	                            }
+	                            ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="container-fluid ">
+						<div class="container p-5">
+							<div class="card-deck">
+								<?
+	                            for ($i = 4; $i < 1;) {
+	                                echo '<div class="card text-center">
+										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+									</div>';
+	                            }
+	                            ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="container-fluid ">
+						<div class="container p-5">
+							<div class="card-deck">
+								<?
+	                            for ($i = 5; $i < 1;) {
+	                                echo '<div class="card text-center">
+										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
+									</div>';
+	                            }
+	                            ?>
 							</div>
 						</div>
 					</div>
@@ -204,7 +234,7 @@ require"config.php";
 			<div class="row text-center ">
 			<?php 
 				while ($mov = mysqli_fetch_assoc($film)){ ?>
-				<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
+				<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2 tile-img">
 					<img src="img/<?php echo $mov['img'];?>" class="w-100">
 					<h3><a href="film.php?id=<?php echo $mov['id'];?>" id="link"><?php echo $mov['title']; ?></a></h3>
 				</div>
@@ -240,5 +270,9 @@ require"config.php";
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script>
+	    $('.card.text-center').css('border', 'none');
+	</script>
+
 </body>
 </html>

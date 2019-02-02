@@ -73,6 +73,9 @@ nav #logo span{
 	font-size: 2.2em;
 }
 /* Слайдер */
+.card{
+	background-color: #24344f;
+}
 .carousel-control-prev-icon, .carousel-control-next-icon{
 	height: 75px;
 	width: 75px;
