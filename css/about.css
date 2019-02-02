@@ -50,12 +50,6 @@ nav #logo span{
   }
 }
 
-@media (max-width: 700px){
-  #faq{
-    visibility: hidden;
-    display: none;
-  }
-}
 
 #faq .title {
   font-weight: lighter;

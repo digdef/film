@@ -99,18 +99,6 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 				Look Later
 			</span>
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div style="margin-left: 5%" class="collapse navbar-collapse " id="navbarSupportedContent">
-			<div class=" mx-auto"></div>
-			<div class="search-box ">
-				<input class="search-txt" type="text" name="" placeholder="Type ro search">
-				<a class="search-btn" href="#">
-					<i class="fas fa-search"></i>
-				</a>
-			</div>
-		</div>
 	</nav>
 
 	<div id="box_registration" class="box">

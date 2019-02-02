@@ -13,10 +13,10 @@
 							<?
 							for ($i = 0; $i < 3; $i++) {
 								echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
 							}
 							?>
@@ -31,10 +31,10 @@
 							<?
 							for ($i = 3; $i < 6; $i++) {
 								echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
 							}
 							?>
@@ -49,10 +49,10 @@
 							<?
 							for ($i = 6; $i < 9; $i++) {
 								echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
 							}
 							?>
@@ -92,11 +92,12 @@
 							<?
                             for ($i = 0; $i < 1; $i++) {
                                 echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
-								</div>';                           }
+									</a>
+								</div>';
+							}
                             ?>
 						</div>
 					</div>
@@ -110,10 +111,10 @@
 							<?
                             for ($i = 1; $i < 2;$i++) {
                                 echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
                             }
                             ?>
@@ -129,10 +130,10 @@
 							<?
                             for ($i = 2; $i < 3; $i++) {
                                 echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
                             }
                             ?>
@@ -148,10 +149,10 @@
 							<?
                             for ($i = 3; $i < 4; $i++) {
                                 echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
                             }
                             ?>
@@ -167,10 +168,10 @@
 							<?
                             for ($i = 4; $i < 5; $i++) {
                                 echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
                             }
                             ?>
@@ -186,10 +187,10 @@
 							<?
                             for ($i = 5; $i < 6; $i++) {
                                 echo '
-								<div class="card text-center ">
-									<a href="film.php?id='.$mov['id'].'">
+								<div class="card text-center">
+									<a href="'.$carousel[$i]['link'].'">
 										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</a>	
+									</a>
 								</div>';
                             }
                             ?>

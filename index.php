@@ -14,7 +14,7 @@ require"config.php";
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
-	<?php
+	<?
 	require"includes/header.php";
 	$result = mysqli_query($connection, "SELECT * FROM slider LIMIT 9");
 	$carousel = array();
@@ -23,7 +23,6 @@ require"config.php";
 		$carousel[] = $r;
 	}
 	require"includes/carousel.php";
-
 	$num = 18; 
 	$page = 1;
 
@@ -41,23 +40,24 @@ require"config.php";
 	$start = $page * $num - $num;
 
 	$film = mysqli_query($connection, "SELECT * FROM `film` ORDER BY `id` DESC LIMIT $start, $num");
-
-
+	
 	?>
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
 			<div class="row text-center ">
-			<?php 
+			<? 
 				while ($mov = mysqli_fetch_assoc($film)){ ?>
 				<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2 tile-img">
-					<img src="img/<?php echo $mov['img'];?>" class="w-100">
-					<h3><a href="film.php?id=<?php echo $mov['id'];?>" id="link"><?php echo $mov['title']; ?></a></h3>
+					<a href="film.php?id=<?php echo $mov['id'];?>" id="link">
+						<img src="img/<?php echo $mov['img'];?>" class="w-100">
+						<h3><? echo $mov['title']; ?></h3>
+					</a>
 				</div>
-			<?php } ?>
+			<? } ?>
 			</div>
 		</div>
 	</div>
-	<div style="text-align: center;"> <?php
+	<div style="text-align: center;"> <?
 				if ($page != 1) $pervpage = '<a style="font-size: 25px;color: #515966;" href= ./index.php?page=1><<</a>  
 				                               <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page - 1) .'>&#9668;</a> ';
 				if ($page != $total) $nextpage = ' <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page + 1) .'>&#9658;</a>  
@@ -69,7 +69,7 @@ require"config.php";
 				?> 
 	</div>
 	<center>
-				<?php
+				<?
 				echo $pervpage.$page2left.$page1left.'<b style="font-size: 26px;color: #515966;">'.$page.'</b>'.$page1right.$page2right.$nextpage;
 				?>
 	</center>
