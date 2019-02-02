@@ -16,219 +16,34 @@ require"config.php";
 <body>
 	<?php
 	require"includes/header.php";
-$result = mysqli_query($connection, "SELECT * FROM slider LIMIT 9");
-$carousel = array();
-while ($r = $result->fetch_assoc()) {
-    $carousel[] = $r;
-}
-?>
-<div id="carousel" style="background-color: #24344f" class="container-fluid">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container-fluid ">
-                    <div class="container p-5">
-                        <div class="card-deck">
-                            <?
-                            for ($i = 0; $i < 3; $i++) {
-                                echo '<div class="card text-center">
-									<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-								</div>';
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <div class="container-fluid ">
-                    <div class="container p-5">
-                        <div class="card-deck">
-                            <?
-                            for ($i = 3; $i < 6; $i++) {
-                                echo '<div class="card text-center">
-									<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-								</div>';
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <div class="container-fluid ">
-                    <div class="container p-5">
-                        <div class="card-deck">
-                            <?
-                            for ($i = 6; $i < 9; $i++) {
-                                echo '<div class="card text-center" >
-									<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-								</div>';
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="#carouselExampleIndicators" class="carousel-control-prev" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">next</span>
-        </a>
-    </div>
-</div>
-<?
-while ($r = $result->fetch_assoc()) {
-    $carousel[] = $r;
-}?>
-	<div id="carousel2" style="background-color: #24344f" class="container-fluid">
-		<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="0"></li>
-				<li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
-				<li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
-				<li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
-				<li data-target="#carouselExampleIndicators1" data-slide-to="5"></li>
+	$result = mysqli_query($connection, "SELECT * FROM slider LIMIT 9");
+	$carousel = array();
 
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<?
-	                            for ($i = 0; $i < 1;) {
-	                                echo '<div class="card text-center">
-										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</div>';
-	                            }
-	                            ?>
-							</div>
-						</div>
-					</div>
-				</div>
+	while ($r = $result->fetch_assoc()) {
+		$carousel[] = $r;
+	}
+	require"includes/carousel.php";
 
-				<div class="carousel-item">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<?
-	                            for ($i = 1; $i < 1;) {
-	                                echo '<div class="card text-center">
-										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</div>';
-	                            }
-	                            ?>
-							</div>
-						</div>
-					</div>
-				</div>
+	$num = 18; 
+	$page = 1;
 
-				<div class="carousel-item">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<?
-	                            for ($i = 2; $i < 1;) {
-	                                echo '<div class="card text-center">
-										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</div>';
-	                            }
-	                            ?>
-							</div>
-						</div>
-					</div>
-				</div>
+	if ( isset($_GET['page']) ) {
+		$page = (int) $_GET['page'];
+	} 
+	$result = mysqli_query($connection,"SELECT COUNT(`id`) AS `posts` FROM `film`"); 
+	$posts = mysqli_fetch_assoc($result);
+	$posts = $posts['posts'];  
+	$total = intval(($posts - 1) / $num) + 1;  
+	$page = intval($page);  
+	if(empty($page) or $page < 0) $page = 1;  
+	  if($page > $total) $page = $total;  
 
-				<div class="carousel-item">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<?
-	                            for ($i = 3; $i < 1;) {
-	                                echo '<div class="card text-center">
-										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</div>';
-	                            }
-	                            ?>
-							</div>
-						</div>
-					</div>
-				</div>
+	$start = $page * $num - $num;
 
-				<div class="carousel-item">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<?
-	                            for ($i = 4; $i < 1;) {
-	                                echo '<div class="card text-center">
-										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</div>';
-	                            }
-	                            ?>
-							</div>
-						</div>
-					</div>
-				</div>
+	$film = mysqli_query($connection, "SELECT * FROM `film` ORDER BY `id` DESC LIMIT $start, $num");
 
-				<div class="carousel-item">
-					<div class="container-fluid ">
-						<div class="container p-5">
-							<div class="card-deck">
-								<?
-	                            for ($i = 5; $i < 1;) {
-	                                echo '<div class="card text-center">
-										<img src="img/slider/' . $carousel[$i]['img'] . '" class="card-img-top">
-									</div>';
-	                            }
-	                            ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a href="#carouselExampleIndicators1" class="carousel-control-prev" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a href="#carouselExampleIndicators1" class="carousel-control-next" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">next</span>
-			</a>
-		</div>
-	</div>
-		<?php
-			$num = 18; 
-			$page = 1;
 
-			if ( isset($_GET['page']) ) {
-				$page = (int) $_GET['page'];
-			} 
-			$result = mysqli_query($connection,"SELECT COUNT(`id`) AS `posts` FROM `film`"); 
-			$posts = mysqli_fetch_assoc($result);
-			$posts = $posts['posts'];  
-			$total = intval(($posts - 1) / $num) + 1;  
-			$page = intval($page);  
-			if(empty($page) or $page < 0) $page = 1;  
-			  if($page > $total) $page = $total;  
- 
-			$start = $page * $num - $num;
-
-			$film = mysqli_query($connection, "SELECT * FROM `film` ORDER BY `id` DESC LIMIT $start, $num");
-
-		
-			?>
+	?>
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
 			<div class="row text-center ">
