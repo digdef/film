@@ -69,11 +69,11 @@ require"config.php";
 				?> 
 	</div>
 	<center>
-				<?
-				echo $pervpage.$page2left.$page1left.'<b style="font-size: 26px;color: #515966;">'.$page.'</b>'.$page1right.$page2right.$nextpage;
-				?>
+		<?
+		echo $pervpage.$page2left.$page1left.'<b style="font-size: 26px;color: #515966;">'.$page.'</b>'.$page1right.$page2right.$nextpage;
+		?>
 	</center>
-	<footer id="faq">
+	<footer id="faq-main">
 		<div>
 			<span class="title"><a id="link" href="includes/about.html">About</a></span><br>
 		</div>
@@ -89,8 +89,7 @@ require"config.php";
 	$('.card.text-center').css('border', 'none');
 	$('.carousel').carousel({
 		interval: 1000 * 30
-	});    
+	});
 	</script>
-
 </body>
 </html>

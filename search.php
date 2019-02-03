@@ -14,13 +14,32 @@ require"config.php";
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
-	<?php
+	<?
 	require"includes/header.php";
 	?>
+	<div>
+		<p>
+			<a class="btn" href="">ДРАМА</a>
+			<a class="btn" href="">КОМЕДИЯ</a>
+			<a class="btn" href="">УЖАСЫ</a>
+			<a class="btn" href="">ТРИЛЛЕР</a>
+			<a class="btn" href="">БОЕВИК</a>
+			<a class="btn" href="">ВЕСТЕРН</a>
+			<a class="btn" href="">ВОЕННЫЙ</a>
+			<a class="btn" href="">ДЕТЕКТИВ</a>
+			<a class="btn" href="">ДОКУМЕНТАЛЬНЫЙ</a>
+			<a class="btn" href="">ИСТОРИЯ</a>
+			<a class="btn" href="">КРИМИНАЛ</a>
+			<a class="btn" href="">МЕЛОДРАМА</a>
+			<a class="btn" href="">МУЗЫКА</a>
+			<a class="btn" href="">МУЗЫКА</a>
+			<a class="btn" href="">МУЛЬТФИЛЬМ</a>
+		</p>		
+	</div>
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
-			<div class="row text-center ">	
-			<?php
+			<div class="row text-center ">
+			<?
 			if (isset($_POST['submit'])) {
 
 				$search = $_POST['search'];
@@ -47,17 +66,18 @@ require"config.php";
 				if ($count == [0]) {
 					echo "Ничего не найдено";
 				} else{
-				while ($row = mysqli_fetch_assoc($query)){ ?>
-					<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
-						<img src="img/<?php echo $row['img'];?>" class="w-100">
-						<h3><a href="film.php?id=<?php echo $row['id'];?>" id="link"><?php echo $row['title']; ?></a></h3>
-					</div>
-				<?php				
-				}}
+					while ($row = mysqli_fetch_assoc($query)){ ?>
+						<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
+							<img src="img/<? echo $row['img'];?>" class="w-100">
+							<h3><a href="film.php?id=<? echo $row['id'];?>" id="link"><? echo $row['title']; ?></a></h3>
+						</div>
+					<?				
+					}
+				}
 			}
 			?>
 			</div>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>

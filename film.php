@@ -14,10 +14,10 @@ require"config.php";
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
-	<?php
+	<?
 	require"includes/header.php";
 	?>
-	<?php
+	<?
 	$film = mysqli_query($connection, "SELECT * FROM `film` WHERE `id` = ".(int) $_GET['id']);
 	if (mysqli_num_rows($film) <= 0) {
 	?>	
@@ -27,43 +27,43 @@ require"config.php";
 			<img style="max-width: 60%; max-height: 60%;" src="img/not.png">
 		</div>
 	</div>
-	<?php
+	<?
 	}
 	else{
 		$art = mysqli_fetch_assoc($film);
 	?>
 	<center>
-		<h2 class="p-5"><?php echo $art['title']; ?></h2>
+		<h2 class="p-5"><? echo $art['title']; ?></h2>
 	</center>
 	<div class="container p-1">
 		<div class="embed-responsive embed-responsive-16by9">
-			<iframe src="<?php echo $art['trailer']; ?>" class="embed-responsive-item" allowfullscreen></iframe>
+			<iframe src="<? echo $art['trailer']; ?>" class="embed-responsive-item" allowfullscreen></iframe>
 		</div>
 	</div>
 	<div style="padding-top: 2%" id="main">
 	<article style="display: inline-block;">
 		<div class="intro">
-			<img  id="index_img"  src="img/<?php echo $art['img'];?>" ></p>
+			<img  id="index_img"  src="img/<? echo $art['img'];?>" ></p>
 			<div>
 				<button style="margin: 0px;" id="btn">Подписаться</button>
 			</div>
 		</div>		    		
 		<div class="text">
 			<span>
-				<?php echo $art['text']; ?> 
+				<? echo $art['text']; ?> 
 			</span>
 		</div>
 		<div class="text">
 			<span>
 				Дата выхода: 
-				<?php echo $art['date']; ?><br>
+				<? echo $art['date']; ?><br>
 				Жанр:
-				<?php echo $art['genre']; ?> 
+				<? echo $art['genre']; ?> 
 			</span>
 		</div>
 	</article>
 
-	<?php
+	<?
 	}
 	?>
 	</div>

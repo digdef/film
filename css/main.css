@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Suez+One');
-body{
+html, body{
 	background-color: #edeef0;
 	margin: 0px;
 	padding: 0px;
@@ -43,7 +43,7 @@ nav #logo span{
 }
 /* Вопросы и ответы */
 
-#faq {
+#faq-main {
 	background-color: #e1eaf0;
 	width: 100%;
 	float: right;
@@ -52,7 +52,7 @@ nav #logo span{
 }
 
 @media (min-width: 801px) {
-	#faq div {
+	#faq-main div {
 		width: 25%;
 		margin-left: 6%;
 		float: right;
@@ -60,13 +60,13 @@ nav #logo span{
 }
 
 @media (max-width: 800px) {
-	#faq div {
+	#faq-main div {
 		width: 80%;
 		margin-left: 10%;
 		float: right;
 	}
 }
-#faq .title {
+#faq-main .title {
 	font-weight: lighter;
 	color: #4f4f4f;
 	margin-bottom: 20px;
@@ -208,7 +208,7 @@ nav #logo span{
 }
 #box_registration{
 	position: relative;
-	margin:9% auto;
+	margin:1% auto;
 	margin-bottom: 0%;
 	text-align: center;
 	padding: 14px 40px;
@@ -288,4 +288,52 @@ nav #logo span{
 		visibility: hidden;
 		display: none;
 	}
+}
+
+/* about*/
+
+#faq{
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+@media (min-width: 801px) {
+	#faq {
+		width: 100%;
+		float: left;
+	}
+	#faq div {
+		width: 25%;
+		margin-left: 6%;
+		float: left;
+	}
+}
+
+@media (max-width: 800px) {
+	#faq div {
+		width: 80%;
+		margin-left: 10%;
+		float: left;
+	}
+}
+
+#faq .title {
+	font-weight: lighter;
+	color: #a3a0ad;
+	margin-bottom: 20px;
+	font-size: 2.2em;
+}
+
+#faq .heading {
+	color: #7d7d7d;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+#faq p {
+	font-family: Arimo, Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	color: #4a4a4a;
+	font-size: 0.95em;
+	margin-bottom: 40px;
 }
