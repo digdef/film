@@ -17,23 +17,22 @@ require"config.php";
 	<?
 	require"includes/header.php";
 	?>
-	<div>
+	<div class="container-fluid" id="genre">
 		<p>
-			<a class="btn" href="">ДРАМА</a>
-			<a class="btn" href="">КОМЕДИЯ</a>
-			<a class="btn" href="">УЖАСЫ</a>
-			<a class="btn" href="">ТРИЛЛЕР</a>
-			<a class="btn" href="">БОЕВИК</a>
-			<a class="btn" href="">ВЕСТЕРН</a>
-			<a class="btn" href="">ВОЕННЫЙ</a>
-			<a class="btn" href="">ДЕТЕКТИВ</a>
-			<a class="btn" href="">ДОКУМЕНТАЛЬНЫЙ</a>
-			<a class="btn" href="">ИСТОРИЯ</a>
-			<a class="btn" href="">КРИМИНАЛ</a>
-			<a class="btn" href="">МЕЛОДРАМА</a>
-			<a class="btn" href="">МУЗЫКА</a>
-			<a class="btn" href="">МУЗЫКА</a>
-			<a class="btn" href="">МУЛЬТФИЛЬМ</a>
+			<button id="btn">ДРАМА</button>
+			<button id="btn">КОМЕДИЯ</button>
+			<button id="btn">УЖАСЫ</button>
+			<button id="btn">ТРИЛЛЕР</button>
+			<button id="btn">БОЕВИК</button>
+			<button id="btn">ВЕСТЕРН</button>
+			<button id="btn">ВОЕННЫЙ</button>
+			<button id="btn">ДЕТЕКТИВ</button>
+			<button id="btn">ДОКУМЕНТАЛЬНЫЙ</button>
+			<button id="btn">ИСТОРИЯ</button>
+			<button id="btn">КРИМИНАЛ</button>
+			<button id="btn">МЕЛОДРАМА</button>
+			<button id="btn">МУЗЫКА</button>
+			<button id="btn">МУЛЬТФИЛЬМ</button>
 		</p>		
 	</div>
 	<div style="padding-top: 20px">
@@ -68,8 +67,10 @@ require"config.php";
 				} else{
 					while ($row = mysqli_fetch_assoc($query)){ ?>
 						<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
-							<img src="img/<? echo $row['img'];?>" class="w-100">
-							<h3><a href="film.php?id=<? echo $row['id'];?>" id="link"><? echo $row['title']; ?></a></h3>
+							<a href="film.php?id=<? echo $row['id'];?>" id="link">
+								<img src="img/<? echo $row['img'];?>" class="w-100">
+								<h3><? echo $row['title']; ?></h3>
+							</a>
 						</div>
 					<?				
 					}

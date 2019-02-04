@@ -48,8 +48,8 @@ require"config.php";
 			<? 
 				while ($mov = mysqli_fetch_assoc($film)){ ?>
 				<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2 tile-img">
-					<a href="film.php?id=<?php echo $mov['id'];?>" id="link">
-						<img src="img/<?php echo $mov['img'];?>" class="w-100">
+					<a href="film.php?id=<? echo $mov['id'];?>" id="link">
+						<img src="img/<? echo $mov['img'];?>" class="w-100">
 						<h3><? echo $mov['title']; ?></h3>
 					</a>
 				</div>

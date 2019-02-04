@@ -177,7 +177,7 @@ nav #logo span{
 	text-decoration: none;
 	border: 0;
 	background: none;
-	display: block;
+
 	margin: 20px auto;
 	text-align: center;
 	border: 2px solid #3498db;
@@ -336,4 +336,9 @@ nav #logo span{
 	color: #4a4a4a;
 	font-size: 0.95em;
 	margin-bottom: 40px;
+}
+
+/* search */
+#genre button{
+	width: 300px;
 }
