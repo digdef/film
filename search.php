@@ -17,24 +17,17 @@ require"config.php";
 	<?
 	require"includes/header.php";
 	?>
+	<?
+	$categories =mysqli_query($connection, "SELECT * FROM `categories`");
+	?>
 	<div class="container-fluid" id="genre">
 		<p>
-			<button id="btn">ДРАМА</button>
-			<button id="btn">КОМЕДИЯ</button>
-			<button id="btn">УЖАСЫ</button>
-			<button id="btn">ТРИЛЛЕР</button>
-			<button id="btn">БОЕВИК</button>
-			<button id="btn">ВЕСТЕРН</button>
-			<button id="btn">ВОЕННЫЙ</button>
-			<button id="btn">ДЕТЕКТИВ</button>
-			<button id="btn">ДОКУМЕНТАЛЬНЫЙ</button>
-			<button id="btn">ИСТОРИЯ</button>
-			<button id="btn">КРИМИНАЛ</button>
-			<button id="btn">МЕЛОДРАМА</button>
-			<button id="btn">МУЗЫКА</button>
-			<button id="btn">МУЛЬТФИЛЬМ</button>
+		<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
+			<button id="btn"><? echo $cat['categories']; ?></button>
+		<? }; ?>
 		</p>		
 	</div>
+	
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
 			<div class="row text-center ">

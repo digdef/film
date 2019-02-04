@@ -67,7 +67,7 @@ require"config.php";
 	}
 	?>
 	</div>
-	<footer id="faq">
+	<footer id="faq-main">
 		<div>
 			<span class="title"><a id="link" href="includes/about.html">About</a></span><br>
 		</div>
