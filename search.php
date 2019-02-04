@@ -20,10 +20,10 @@ require"config.php";
 	<?
 	$categories =mysqli_query($connection, "SELECT * FROM `categories`");
 	?>
-	<div class="container-fluid" id="genre">
+	<div class="container">
 		<p>
 		<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
-			<button id="btn"><? echo $cat['categories']; ?></button>
+			<button onclick="location='/'" id="genre"><? echo $cat['categories']; ?></button>
 		<? }; ?>
 		</p>		
 	</div>
