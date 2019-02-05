@@ -102,7 +102,7 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 	</nav>
 
 	<div id="box_registration" class="box">
-		<form action="registration.php" method="POST"> 
+		<form action="login.php" method="POST"> 
 			<h1>Вход</h1>
 			<input required="" type="text" name="login" placeholder="Логин">
 			<input required="" type="password" name="password" placeholder="Пароль">
@@ -118,7 +118,7 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
 				<div>
-					<form id="brm" class="box" action="registration.php" method="POST">
+					<form id="brm" class="box" action="login.php" method="POST">
 						<h1>Регистрация</h1>
 						<input required="Введите Логин" type="text" name="login" placeholder="Ваш Логин" value="<? echo @$data['login'] ?>">
 						<input required="Введите Имя" type="text" name="name" placeholder="Ваше Имя" value="<? echo @$data['name'] ?>">
