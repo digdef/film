@@ -341,7 +341,7 @@ nav #logo span{
 /* search */
 
 #genre {
-	font-size: 10px;
+	font-size: 12px;
 	width: 200px;
 	transition: 0.25s;
 	background: none;
@@ -351,6 +351,7 @@ nav #logo span{
 	padding: 14px 10px;
 	outline: none;
 	border-radius: 24px;
+	color: white;
 }
 
 #genre:hover {
@@ -361,6 +362,31 @@ nav #logo span{
 
 @media (max-width: 451px) {
 	#genre{
-		width: 45%;
+		width: 49%;
 	}
+}
+
+#genre-bar {
+	margin: 10%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#genre-btn {
+	background: #34495e;
+	font-size: 30px;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	width: 100%;
+	height: 50px;
+	color: white;
+}
+
+#genre-btn:hover {
+	background:#2c3e50;
+}
+
+#vipad{
+	background: #34495e;
 }

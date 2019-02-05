@@ -17,17 +17,21 @@ require"config.php";
 	<?
 	require"includes/header.php";
 	?>
+<a id="genre-btn" href="#" onclick="toggle('#vipad');">Жанр</a>
+
+<div id="vipad">
 	<?
 	$categories =mysqli_query($connection, "SELECT * FROM `categories`");
 	?>
-	<div class="container">
+	<div id="genre-bar" >
 		<p>
 		<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
 			<button onclick="location='/'" id="genre"><? echo $cat['categories']; ?></button>
 		<? }; ?>
-		</p>		
+		</p>
 	</div>
-	
+</div> 
+
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
 			<div class="row text-center ">
@@ -47,31 +51,108 @@ require"config.php";
 				foreach ($search as $key) {
 					$i++;
 					if ($i < $count)  {
-						$array[] = "CONCAT (`title_search`) LIKE '%$key%' OR";
+						$array[] = "CONCAT (`title`) LIKE '%$key%' OR";
 					} else {
-						$array[] = "CONCAT (`title_search`) LIKE '%$key%'";
+						$array[] = "CONCAT (`title`) LIKE '%$key%'";
 					}
 				}
 
 				$sql = "SELECT * FROM `film` WHERE ".implode(" ", $array);
 				$query = mysqli_query($connection, $sql);
-				if ($count == [0]) {
-					echo "Ничего не найдено";
-				} else{
-					while ($row = mysqli_fetch_assoc($query)){ ?>
-						<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
-							<a href="film.php?id=<? echo $row['id'];?>" id="link">
-								<img src="img/<? echo $row['img'];?>" class="w-100">
-								<h3><? echo $row['title']; ?></h3>
-							</a>
-						</div>
-					<?				
-					}
+
+				while ($row = mysqli_fetch_assoc($query)){ ?>
+					<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
+						<a href="film.php?id=<? echo $row['id'];?>" id="link">
+							<img src="img/<? echo $row['img'];?>" class="w-100">
+							<h3><? echo $row['title']; ?></h3>
+						</a>
+					</div>
+				<?
 				}
 			}
 			?>
 			</div>
 		</div>
 	</div>
+	<?
+	$num = 18; 
+	$page = 1;
+
+	if ( isset($_GET['page']) ) {
+		$page = (int) $_GET['page'];
+	} 
+	$result = mysqli_query($connection,"SELECT COUNT(`id`) AS `posts` FROM `film`"); 
+	$posts = mysqli_fetch_assoc($result);
+	$posts = $posts['posts'];  
+	$total = intval(($posts - 1) / $num) + 1;  
+	$page = intval($page);  
+	if(empty($page) or $page < 0) $page = 1;  
+	  if($page > $total) $page = $total;  
+
+	$start = $page * $num - $num;
+
+	$film = mysqli_query($connection, "SELECT * FROM `film` ORDER BY `id` DESC LIMIT $start, $num");
+	
+	?>
+	<div style="padding-top: 20px">
+		<div class="container-fluid" id="content">
+			<div class="row text-center ">
+			<? 
+				while ($mov = mysqli_fetch_assoc($film)){ ?>
+				<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2 tile-img">
+					<a href="film.php?id=<? echo $mov['id'];?>" id="link">
+						<img src="img/<? echo $mov['img'];?>" class="w-100">
+						<h3><? echo $mov['title']; ?></h3>
+					</a>
+				</div>
+			<? } ?>
+			</div>
+		</div>
+	</div>
+	<div style="text-align: center;"> <?
+				if ($page != 1) $pervpage = '<a style="font-size: 25px;color: #515966;" href= ./index.php?page=1><<</a>  
+				                               <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page - 1) .'>&#9668;</a> ';
+				if ($page != $total) $nextpage = ' <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page + 1) .'>&#9658;</a>  
+				                                   <a style="font-size: 25px;color: #515966;" href= ./index.php?page=' .$total. '>>></a>';  
+				if($page - 2 > 0) $page2left = ' <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a>  ';  
+				if($page - 1 > 0) $page1left = '<a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a>  ';  
+				if($page + 2 <= $total) $page2right = '  <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
+				if($page + 1 <= $total) $page1right = '  <a style="font-size: 25px;color: #515966;" href= ./index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>';
+				?> 
+	</div>
+	<center>
+		<?
+		echo $pervpage.$page2left.$page1left.'<b style="font-size: 26px;color: #515966;">'.$page.'</b>'.$page1right.$page2right.$nextpage;
+		?>
+	</center>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+$(function() {
+	$("div[id*='vipad']").hide();    
+})();
+
+
+function toggle(objName) {
+	var obj = $(objName),
+	blocks = $("div[id*='vipad']");
+
+	if (obj.css("display") != "none") {
+		obj.animate({ height: 'hide' }, 500);
+	} else {
+		var visibleBlocks = $("div[id*='vipad']:visible");
+
+		if (visibleBlocks.length < 1) {
+			obj.animate({ height: 'show' }, 500);
+		} else {
+			$(visibleBlocks).animate({ height: 'hide' }, 500, function() {
+				obj.animate({ height: 'show' }, 500);
+			});
+		}
+	}
+}
+</script>
 </body>
 </html>
