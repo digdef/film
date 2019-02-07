@@ -35,42 +35,39 @@ require"config.php";
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
 			<div class="row text-center ">
-			<?
-			if (isset($_POST['submit'])) {
-
-				$search = $_POST['search'];
-				$search = trim($search);
-				$search = strip_tags($search);
-				$search = mysqli_real_escape_string($connection, $search);
-				$search = explode(" ", $search);
-
-				$count = count($search);
-				$array = array();
-				$i = 0;
-
-				foreach ($search as $key) {
-					$i++;
-					if ($i < $count)  {
-						$array[] = "CONCAT (`title`) LIKE '%$key%' OR";
-					} else {
-						$array[] = "CONCAT (`title`) LIKE '%$key%'";
-					}
-				}
-
-				$sql = "SELECT * FROM `film` WHERE ".implode(" ", $array);
-				$query = mysqli_query($connection, $sql);
-
-				while ($row = mysqli_fetch_assoc($query)){ ?>
-					<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2">
-						<a href="film.php?id=<? echo $row['id'];?>" id="link">
-							<img src="img/<? echo $row['img'];?>" class="w-100">
-							<h3><? echo $row['title']; ?></h3>
-						</a>
-					</div>
 				<?
+				if (isset($_POST['submit'])) {
+					$reply = '';
+					$search = $_POST['search'];
+					$search = trim($search);
+					$search = strip_tags($search);
+					$search = mysqli_real_escape_string($connection, $search);
+
+
+					if(!empty($search)){
+						$result = mysqli_query($connection, "SELECT * FROM film WHERE title LIKE '%$search%' ");
+						$num = mysqli_num_rows($result);
+						if($num > 0){
+							$row = mysqli_fetch_assoc($result);  
+							do{
+								$reply .='<div class="col-xs-2 col-sm-4 col-lg-3 col-xl-2 tile-img">';
+								$reply .='<a href="film.php?id='. $row['id'].'" id="link">';
+								$reply .='<img src="img/'.$row['img'].'" class="w-100">';
+								$reply .='<h3>'. $row['title'].'</h3>';
+								$reply .='</a>';
+								$reply .='</div>';							
+							}
+							while($row = mysqli_fetch_assoc($result));
+						} else{
+							$reply = '<h1>По вашему запросу ничего не найдено.</h1>';
+						}
+					}
+					else{
+						$reply = '<h1>Задан пустой поисковый запрос.</h1>';
+					}
+					echo $reply;
 				}
-			}
-			?>
+				?>
 			</div>
 		</div>
 	</div>
