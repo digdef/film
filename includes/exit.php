@@ -1,8 +1,10 @@
 <?php
 session_start();
-unset($_SESSION['logget_user']);
+unset($_SESSION['auth']);
+unset($_SESSION['id']);
+unset($_SESSION['login']);
 
 setcookie('login', '', time() - 10); //удаляем логин
 setcookie('key', '', time() - 10); //удаляем ключ
 
-header("location: ../registration.php");
+header("location: ../login.php");

@@ -26,7 +26,7 @@ require"config.php";
 	<div id="genre-bar" >
 		<p>
 		<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
-			<button onclick="location='/'" id="genre"><? echo $cat['categories']; ?></button>
+			<button onclick="location='/categories.php?id=<? echo $cat['id'];?>'" id="genre"><? echo $cat['categories']; ?></button>
 		<? }; ?>
 		</p>
 	</div>

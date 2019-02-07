@@ -16,8 +16,7 @@ require"config.php";
 <body>
 	<?
 	require"includes/header.php";
-	?>
-	<?
+
 	$film = mysqli_query($connection, "SELECT * FROM `film` WHERE `id` = ".(int) $_GET['id']);
 	if (mysqli_num_rows($film) <= 0) {
 	?>	
@@ -28,8 +27,7 @@ require"config.php";
 		</div>
 	</div>
 	<?
-	}
-	else{
+	} else {
 		$art = mysqli_fetch_assoc($film);
 	?>
 	<center>
