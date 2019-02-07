@@ -177,7 +177,6 @@ nav #logo span{
 	text-decoration: none;
 	border: 0;
 	background: none;
-
 	margin: 20px auto;
 	text-align: center;
 	border: 2px solid #3498db;
@@ -217,6 +216,9 @@ nav #logo span{
 .box-settings{
 	font-size: 20px;
 	text-align: center;
+}
+.box-settings input[type = "submit"]{
+	width: 275px;
 }
 .box-settings input[type = "text"], .box-settings input[type = "password"], .box-settings input[type="email"], .box-settings button {
 	border: 0;
