@@ -16,6 +16,22 @@ require"config.php";
 <body>
 	<?
 	require"includes/header.php";
+	?>
+	<a id="genre-btn" href="#" onclick="toggle('#vipad');">Жанр:</a>
+
+	<div id="vipad">
+		<?
+		$categories =mysqli_query($connection, "SELECT * FROM `categories`");
+		?>
+		<div id="genre-bar" >
+			<p>
+			<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
+				<button onclick="location='/categories.php?id=<? echo $cat['id'];?>'" id="genre"><? echo $cat['categories']; ?></button>
+			<? }; ?>
+			</p>
+		</div>
+	</div>
+	<?	
 
 	$categor = mysqli_query($connection, "SELECT * FROM `categories` WHERE `id` = ".(int) $_GET['id']);
 	if (mysqli_num_rows($categor) <= 0) {
@@ -73,11 +89,9 @@ require"config.php";
 		</div>
 	<? } ?>
 
-
-
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/genre.js"></script>
 </body>
 </html>

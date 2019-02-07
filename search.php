@@ -17,20 +17,20 @@ require"config.php";
 	<?
 	require"includes/header.php";
 	?>
-<a id="genre-btn" href="#" onclick="toggle('#vipad');">Жанр</a>
+	<a id="genre-btn" href="#" onclick="toggle('#vipad');">Жанр</a>
 
-<div id="vipad">
-	<?
-	$categories =mysqli_query($connection, "SELECT * FROM `categories`");
-	?>
-	<div id="genre-bar" >
-		<p>
-		<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
-			<button onclick="location='/categories.php?id=<? echo $cat['id'];?>'" id="genre"><? echo $cat['categories']; ?></button>
-		<? }; ?>
-		</p>
-	</div>
-</div> 
+	<div id="vipad">
+		<?
+		$categories =mysqli_query($connection, "SELECT * FROM `categories`");
+		?>
+		<div id="genre-bar" >
+			<p>
+			<?	while ($cat = mysqli_fetch_assoc($categories)){ ?>
+				<button onclick="location='/categories.php?id=<? echo $cat['id'];?>'" id="genre"><? echo $cat['categories']; ?></button>
+			<? }; ?>
+			</p>
+		</div>
+	</div> 
 
 	<div style="padding-top: 20px">
 		<div class="container-fluid" id="content">
@@ -125,31 +125,6 @@ require"config.php";
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-$(function() {
-	$("div[id*='vipad']").hide();    
-})();
-
-
-function toggle(objName) {
-	var obj = $(objName),
-	blocks = $("div[id*='vipad']");
-
-	if (obj.css("display") != "none") {
-		obj.animate({ height: 'hide' }, 500);
-	} else {
-		var visibleBlocks = $("div[id*='vipad']:visible");
-
-		if (visibleBlocks.length < 1) {
-			obj.animate({ height: 'show' }, 500);
-		} else {
-			$(visibleBlocks).animate({ height: 'hide' }, 500, function() {
-				obj.animate({ height: 'show' }, 500);
-			});
-		}
-	}
-}
-</script>
+	<script type="text/javascript" src="js/genre.js"></script>
 </body>
 </html>
