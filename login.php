@@ -75,6 +75,8 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 			$_SESSION['login'] = $user['login']; 
 		}
 	}
+} else {
+	header("location: account.php");
 }
 ?>
 
