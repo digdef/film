@@ -39,38 +39,72 @@ require"config.php";
 		</div>
 	</div>
 	<div style="padding-top: 2%" id="main">
-	<article style="display: inline-block;">
-		<div class="intro">
-			<img  id="index_img"  src="img/<? echo $art['img'];?>" ></p>
-			<div>
-				<button style="margin: 0px;" id="btn">Подписаться</button>
+		<article style="display: inline-block;">
+			<div class="intro">
+				<img  id="index_img"  src="img/<? echo $art['img'];?>" ></p>
+				<div>
+					<button style="margin: 0px;" id="btn">Подписаться</button>
+				</div>
 			</div>
-		</div>		    		
-		<div class="text">
-			<span>
-				<? echo $art['text']; ?> 
-			</span>
-		</div>
-		<div class="text">
-			<span>
-				Дата выхода: 
-				<? echo $art['date']; ?><br>
-				Жанр:
-				<? echo $art['genre']; ?> 
-			</span>
-		</div>
-		<div>
-			<form>
-				<input type="" name="">
-				<input type="" name="">
+			<div class="text">
+				<span>
+					<? echo $art['text']; ?> 
+				</span>
+			</div>
+			<div class="text">
+				<span>
+					Дата выхода: 
+					<? echo $art['date']; ?><br>
+					Жанр:
+					<? echo $art['genre']; ?> 
+				</span>
+			</div>
+		</article>
+	</div>
+	<div class="container">	
+		<div class="box-comment">
+			<form action="film.php" method="POST">
+				<input type="text" name="comment" placeholder="Комментарий">
+				<button type="submit" name="add_comment"><i class="far fa-paper-plane"></i></button>
 			</form>
-		</div>
-	</article>
+		</div>	
+		<div style="display: inline-block;">	
+				<div id="comment">
+					<div>
+						<div>
+							<span>chmo</span>
+						</div>
+						<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
+						
+					</div>					
+					<div id="comment1">
 
+						<span><? echo $art['text']; ?> </span>
+					</div>
+				</div>
+			<div id="comment"> 
+				<span><? echo $art['text']; ?> </span>
+			</div>
+			<div id="comment"> 
+				<span><? echo $art['text']; ?> </span>
+			</div>
+			<div id="comment"> 
+				<span><? echo $art['text']; ?> </span>
+			</div>
+			<div id="comment"> 
+				<span><? echo $art['text']; ?> </span>
+			</div>
+			<div id="comment"> 
+				<span><? echo $art['text']; ?> </span>
+			</div>
+			<div id="comment"> 
+				<span><? echo $art['text']; ?> </span>
+			</div>
+		</div>
+	</div>
 	<?
 	}
-	?>
-	</div>
+	?>	
 	<footer id="faq-main">
 		<div>
 			<span class="title"><a id="link" href="includes/about.html">About</a></span><br>
