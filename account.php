@@ -39,6 +39,7 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 		mysqli_query($connection, "UPDATE `users` SET `avatar` = 'avatar3.png' WHERE `users`.`id` ='$id' ");	
 	}
 	?>
+
 	<div style="padding-top: 1%"></div>
 	<div id="main">
 		<article style="display: inline-block;">
@@ -72,6 +73,31 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 						<input minlength="7" type="password" name="password" placeholder="Подтвердите Пароль" value="<? echo @$data['password'] ?>">
 						<input minlength="7" type="password" name="password_2" placeholder="Изменить Пароль" value="<? echo @$data['password_2'] ?>"><br>
 						<input id="btn"  type="submit" name="update_password" value="Изменить">
+						<?
+						if (isset($_POST['update_name'])) {
+								mysqli_query($connection, "UPDATE `users` SET `name` = '".$_POST['name']."' WHERE `users`.`id` ='$id' ");
+								echo '<center><div id="reg_notifice" style="color: green ;">Успешно</div><hr></center>';
+						}
+						if (isset($_POST['update_email'])) {
+								mysqli_query($connection, "UPDATE `users` SET `email` = '".$_POST['email']."' WHERE `users`.`id` ='$id' ");
+								echo '<center><div id="reg_notifice" style="color: green ;">Успешно</div><hr></center>';
+						}
+						if (isset($_POST['update_password'])) {
+							$errors = array();
+							if ($data['password'] == '') {
+								$errors[] = 'Введите Пароль!';
+							}
+							if ($data['password_2'] != $data['password']) {
+								$errors[] = 'Подтвердите Пароль!';
+							}
+							if (empty($errors)) {
+								mysqli_query($connection, "UPDATE `users` SET `password` = '".password_hash($data['password'], PASSWORD_DEFAULT)."' WHERE `users`.`id` ='$id' ");
+								echo '<center><div id="reg_notifice" style="color: green ;">Успешно</div><hr></center>';
+							} else {
+								echo '<center><span style="color: red;font-weight: bold; padding-bottom:30px;">'.$errors['0'].'</span></center>';
+							}
+						}
+						?>
 					</form>	
 				</div>
 			</div>
@@ -114,28 +140,7 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 			</div>
 		</div>
 	</div>
-	<?
-	if (isset($_POST['update_name'])) {
-			mysqli_query($connection, "UPDATE `users` SET `name` = '".$_POST['name']."' WHERE `users`.`id` ='$id' ");
-			echo '<center><div id="reg_notifice" style="color: green ;">успешно</div><hr></center>';
-	}
-	if (isset($_POST['update_email'])) {
-			mysqli_query($connection, "UPDATE `users` SET `email` = '".$_POST['email']."' WHERE `users`.`id` ='$id' ");
-			echo '<center><div id="reg_notifice" style="color: green ;">успешно</div><hr></center>';
-	}
-	if (isset($_POST['update_password'])) {
-		if ($data['password'] == '') {
-			$errors[] = 'Введите Пароль!';
-		}
-		if ($data['password_2'] != $data['password']) {
-			$errors[] = 'Подтвердите Пароль!';
-		}
-		if (empty($errors)) {
-			mysqli_query($connection, "UPDATE `users` SET `password` = '".password_hash($data['password'], PASSWORD_DEFAULT)."' WHERE `users`.`id` ='$id' ");
-			echo '<center><div id="reg_notifice" style="color: green ;">успешно</div><hr></center>';
-		}
-	}
-	?>	
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

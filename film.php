@@ -59,6 +59,12 @@ require"config.php";
 				<? echo $art['genre']; ?> 
 			</span>
 		</div>
+		<div>
+			<form>
+				<input type="" name="">
+				<input type="" name="">
+			</form>
+		</div>
 	</article>
 
 	<?
