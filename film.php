@@ -68,37 +68,54 @@ require"config.php";
 				<button type="submit" name="add_comment"><i class="far fa-paper-plane"></i></button>
 			</form>
 		</div>	
-		<div style="display: inline-block;">	
-				<div id="comment">
-					<div>
-						<div>
-							<span>chmo</span>
-						</div>
-						<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
-						
-					</div>					
-					<div id="comment1">
-
-						<span><? echo $art['text']; ?> </span>
+		<div class="container" style="display: inline-block;">	
+			<div id="comment">
+				<div>
+					<div style="text-align: center;">
+						<span>chmo</span>
 					</div>
+					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
+				</div>					
+				<div id="comment1">
+					<span><? echo $art['text']; ?> </span>
 				</div>
-			<div id="comment"> 
-				<span><? echo $art['text']; ?> </span>
+
 			</div>
-			<div id="comment"> 
-				<span><? echo $art['text']; ?> </span>
+			<div id="comment">
+				<div>
+					<div style="text-align: center;">
+						<span>chmo</span>
+					</div>
+					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
+				</div>					
+				<div id="comment1">
+
+					<span><? echo $art['text']; ?> </span>
+				</div>
 			</div>
-			<div id="comment"> 
-				<span><? echo $art['text']; ?> </span>
+			<div id="comment">
+				<div>
+					<div style="text-align: center;">
+						<span>chmo</span>
+					</div>
+					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
+				</div>					
+				<div id="comment1">
+
+					<span><? echo $art['text']; ?> </span>
+				</div>
 			</div>
-			<div id="comment"> 
-				<span><? echo $art['text']; ?> </span>
-			</div>
-			<div id="comment"> 
-				<span><? echo $art['text']; ?> </span>
-			</div>
-			<div id="comment"> 
-				<span><? echo $art['text']; ?> </span>
+			<div id="comment">
+				<div>
+					<div style="text-align: center;">
+						<span>chmo</span>
+					</div>
+					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
+				</div>					
+				<div id="comment1">
+
+					<span><? echo $art['text']; ?> </span>
+				</div>
 			</div>
 		</div>
 	</div>

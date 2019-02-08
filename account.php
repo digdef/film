@@ -75,12 +75,28 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 						<input id="btn"  type="submit" name="update_password" value="Изменить">
 						<?
 						if (isset($_POST['update_name'])) {
+							$errors = array();
+							if ($data['name'] == '') {
+								$errors[] = 'Введите Имя!';
+							}
+							if (empty($errors)) {
 								mysqli_query($connection, "UPDATE `users` SET `name` = '".$_POST['name']."' WHERE `users`.`id` ='$id' ");
 								echo '<center><div id="reg_notifice" style="color: green ;">Успешно</div><hr></center>';
+							} else {
+								echo '<center><span style="color: red;font-weight: bold; padding-bottom:30px;">'.$errors['0'].'</span></center>';
+							}
 						}
 						if (isset($_POST['update_email'])) {
+							$errors = array();
+							if ($data['email'] == '') {
+								$errors[] = 'Введите Email!';
+							}
+							if (empty($errors)) {
 								mysqli_query($connection, "UPDATE `users` SET `email` = '".$_POST['email']."' WHERE `users`.`id` ='$id' ");
 								echo '<center><div id="reg_notifice" style="color: green ;">Успешно</div><hr></center>';
+							} else {
+								echo '<center><span style="color: red;font-weight: bold; padding-bottom:30px;">'.$errors['0'].'</span></center>';
+							}
 						}
 						if (isset($_POST['update_password'])) {
 							$errors = array();
