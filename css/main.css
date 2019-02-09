@@ -41,6 +41,13 @@ nav #logo span{
 #link:hover{
 	color: #4286f4
 }
+#link1{
+	text-decoration: none;
+	color: white;
+}
+#link1:hover{
+	color: #59e9df
+}
 /* Вопросы и ответы */
 
 #faq-main {

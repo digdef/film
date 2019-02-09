@@ -1,5 +1,6 @@
 <?php
 require"config.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,12 +39,18 @@ require"config.php";
 			<iframe src="<? echo $art['trailer']; ?>" class="embed-responsive-item" allowfullscreen></iframe>
 		</div>
 	</div>
+	<?
+	$film_title = $art['title'];
+	$genre = mysqli_query($connection,"SELECT * FROM `genre` WHERE `film`='$film_title' ");
+	?>
 	<div style="padding-top: 2%" id="main">
 		<article style="display: inline-block;">
 			<div class="intro">
 				<img  id="index_img"  src="img/<? echo $art['img'];?>" ></p>
 				<div>
-					<button style="margin: 0px;" id="btn">Подписаться</button>
+					<form action="film.php?id=<? echo $art['id'];?>" method="POST">
+						<button type="submit" name="subscriptions" style="margin: 0px;" id="btn">Подписаться</button>
+					</form>
 				</div>
 			</div>
 			<div class="text">
@@ -56,67 +63,95 @@ require"config.php";
 					Дата выхода: 
 					<? echo $art['date']; ?><br>
 					Жанр:
-					<? echo $art['genre']; ?> 
+					<?
+					while ($gnr = mysqli_fetch_array($genre)) {
+						$gnr1 = $gnr['categories'];
+
+						$categories = mysqli_query($connection, "SELECT * FROM `categories` WHERE `categories`='$gnr1' ");
+						$cat = mysqli_fetch_assoc($categories);
+						?>
+						<a href="categories.php?id=<? echo $cat['id'];?>" id="link">
+							<? echo $cat['categories'];?>
+						</a>
+						<?
+					}
+					?> 
 				</span>
 			</div>
 		</article>
 	</div>
-	<div class="container">	
+	<div class="container">
+
 		<div class="box-comment">
-			<form action="film.php" method="POST">
-				<input type="text" name="comment" placeholder="Комментарий">
+			<form action="film.php?id=<? echo $art['id'];?>" method="POST">
+				<input type="text" name="text" placeholder="Комментарий">
 				<button type="submit" name="add_comment"><i class="far fa-paper-plane"></i></button>
+				<?
+				$name = $_SESSION['login'];
+				$res = mysqli_query($connection,"SELECT * FROM `users` WHERE `login`='$name' ");
+				$user_data = mysqli_fetch_array($res);
+
+				$genre1 = mysqli_query($connection,"SELECT * FROM `subs` WHERE `subscription`='$film_title' AND `subscriber`='$name'");
+
+				if (isset($_POST['subscriptions'])) {
+					if (mysqli_num_rows($genre1) > 0) {
+						$errors[] = 'Вы уже подписаны!';
+					}
+					if (empty($errors)) {
+						mysqli_query($connection, "INSERT INTO `subs` (`subscriber`, `subscription`) VALUES ('".$name."','".$film_title."')");
+					}
+					else {
+						echo '<center><div id="reg_notifice" style="color: red;">'.array_shift($errors).'</div></center>';
+					}
+				}
+
+				if (isset($_POST['add_comment'])) {
+					$errors = array();
+					if ($_POST['text'] == '') {
+						$errors[] = 'Добавьте Комментарий';
+					}
+					if ($user_data['name'] == '') {
+						$errors[] = 'Войдите';
+					}
+					if (empty($errors)) {
+						mysqli_query($connection, "INSERT INTO `comment` (`text`,`nick`,`avatar`,`film_id`) VALUES ('".$_POST['text']."', '".$user_data['name']."', '".$user_data['avatar']."', '".$art['id']."') ");
+						echo '<div id="reg_notifice" style="color: green; ">Успешно</div>';
+					} else {
+						echo '<center><span style="color: red;font-weight: bold; padding-bottom:30px;">'.$errors['0'].'</span></center>';
+					}
+				}
+				?>				
 			</form>
-		</div>	
-		<div class="container" style="display: inline-block;">	
-			<div id="comment">
-				<div>
-					<div style="text-align: center;">
-						<span>chmo</span>
-					</div>
-					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
-				</div>					
-				<div id="comment1">
-					<span><? echo $art['text']; ?> </span>
-				</div>
+		</div>
 
-			</div>
-			<div id="comment">
-				<div>
-					<div style="text-align: center;">
-						<span>chmo</span>
+		<div class="container" style="display: inline-block;">
+			<?
+			$comments = mysqli_query($connection, "SELECT * FROM `comment` WHERE `film_id` = '". (int) $art['id']."' ORDER BY `id` DESC");
+			if (mysqli_num_rows($comments) <= 0) {
+				?>
+				<div id="comment">				
+					<div style="text-align: center; width: 100%" id="comment1">
+						<h3>Нет Комментариев!</h3>
 					</div>
-					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
-				</div>					
-				<div id="comment1">
-
-					<span><? echo $art['text']; ?> </span>
 				</div>
-			</div>
-			<div id="comment">
-				<div>
-					<div style="text-align: center;">
-						<span>chmo</span>
+				<?
+			} 
+			while ($comment = mysqli_fetch_assoc($comments)) { 
+			?>
+				<div id="comment">
+					<div>
+						<div style="text-align: center;">
+							<span><? echo $comment['nick']; ?></span>
+						</div>
+						<img id="avatar_img" src="img/avatar/<? echo $comment['avatar'];?>"></p>
+					</div>					
+					<div id="comment1">
+						<span><? echo $comment['text']; ?> </span>
 					</div>
-					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
-				</div>					
-				<div id="comment1">
-
-					<span><? echo $art['text']; ?> </span>
 				</div>
-			</div>
-			<div id="comment">
-				<div>
-					<div style="text-align: center;">
-						<span>chmo</span>
-					</div>
-					<img id="avatar_img" src="img/<? echo $art['img'];?>" ></p>
-				</div>					
-				<div id="comment1">
-
-					<span><? echo $art['text']; ?> </span>
-				</div>
-			</div>
+			<?	
+			}
+			?>
 		</div>
 	</div>
 	<?

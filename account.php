@@ -146,11 +146,11 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 					<h1>Подписки</h1>
 					<?
 					while ($sub=mysqli_fetch_array($subscriptions)){ 
-					$sub1=$sub['subscription'];			
-					$film = mysqli_query($connection, "SELECT * FROM `film` WHERE `title`='$sub1' ORDER BY `id`");
-					$mov = mysqli_fetch_assoc($film);
-					?>
-						<a href="film.php?id=<?php echo $mov['id'];?>"><? echo $sub['subscription']?></a><br>
+						$sub1=$sub['subscription'];			
+						$film = mysqli_query($connection, "SELECT * FROM `film` WHERE `title`='$sub1' ORDER BY `id`");
+						$mov = mysqli_fetch_assoc($film);
+						?>
+						<a id="link1" href="film.php?id=<?php echo $mov['id'];?>"><? echo $sub['subscription']?></a><br>
 					<? } ?>
 				</form>
 			</div>
