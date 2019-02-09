@@ -112,8 +112,10 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 			<div style="color: white">
 				Запомнить <input name='remember' type='checkbox' value='1'>
 			</div>
+			
 		</form>
 		<input id="btn" type="submit" value="Регистрация" data-toggle="modal" data-target="#exampleModal">
+		<a id="link1" href="verification.php">Забыл пароль!</a>
 	</div>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
@@ -181,9 +183,6 @@ if (isset($data['do_signup'])) {
 	else {
 		echo '<center><div id="reg_notifice" style="color: red;">'.array_shift($errors).'</div></center>';
 	}
-}
-if(isset($_SESSION['logget_user'])) {
-
 }
 ?>
 	

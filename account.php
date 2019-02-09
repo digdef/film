@@ -70,8 +70,8 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 						<input type="email" name="email" placeholder="Изменить Email" value="<? echo @$data['email'] ?>">
 						<input id="btn" type="submit" name="update_email" value="Изменить">
 
-						<input minlength="7" type="password" name="password" placeholder="Подтвердите Пароль" value="<? echo @$data['password'] ?>">
-						<input minlength="7" type="password" name="password_2" placeholder="Изменить Пароль" value="<? echo @$data['password_2'] ?>"><br>
+						<input minlength="7" type="password" name="password" placeholder="Изменить Пароль" value="<? echo @$data['password'] ?>">
+						<input minlength="7" type="password" name="password_2" placeholder="Подтвердите Пароль" value="<? echo @$data['password_2'] ?>"><br>
 						<input id="btn"  type="submit" name="update_password" value="Изменить">
 						<?
 						if (isset($_POST['update_name'])) {
