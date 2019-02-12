@@ -114,7 +114,11 @@ session_start();
 						$errors[] = 'Войдите';
 					}
 					if (empty($errors)) {
-						mysqli_query($connection, "INSERT INTO `comment` (`text`,`nick`,`avatar`,`film_id`) VALUES ('".$_POST['text']."', '".$user_data['name']."', '".$user_data['avatar']."', '".$art['id']."') ");
+						$text = $_POST['text'];
+						$text = strip_tags($text);
+						$text = mysqli_real_escape_string($connection, $text);		
+
+						mysqli_query($connection, "INSERT INTO `comment` (`text`,`nick`,`avatar`,`film_id`) VALUES ('".$text."', '".$user_data['name']."', '".$user_data['avatar']."', '".$art['id']."') ");
 						echo '<div id="reg_notifice" style="color: green; ">Успешно</div>';
 					} else {
 						echo '<center><span style="color: red;font-weight: bold; padding-bottom:30px;">'.$errors['0'].'</span></center>';
