@@ -15,6 +15,3 @@ $connection = mysqli_connect(
 	$config['bd']['password'],
 	$config['bd']['name']
 );
-
-require 'lib/rb.php';
-R::setup( 'mysql:host=localhost;dbname=film','root', '' );

@@ -14,22 +14,25 @@ $data =$_POST;
 if (isset($data['do_login'])){
 	if ( !empty($data['password']) and !empty($data['login']) ) {
 
-		$login = $data['login']; 
+		$login = $data['login'];
+		$login = strip_tags($login);
+		$login = mysqli_real_escape_string($connection, $login);
+
 		$password = $data['password']; 
+		$password = strip_tags($password);
+		$password = mysqli_real_escape_string($connection, $password);	
 
 		$query = 'SELECT*FROM users WHERE login="'.$login.'"';
 		$result = mysqli_query($connection, $query); 
 
 		$user = mysqli_fetch_assoc($result); 
-		$user1 = R::findOne('users','login = ?', array($data['login']));
+
 
 		if (!empty($user)) {
 
-			$salt = $user['salt'];
+			$saltedPassword =$user['password'];
 
-			$saltedPassword = md5($password);
-
-			if (password_verify($data['password'], $user1->password)) {
+			if (password_verify ($password ,$saltedPassword)) {
 
 				session_start(); 
 
@@ -140,9 +143,17 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 $data =$_POST;
 if (isset($data['do_login'])){
 	$errors = array();
-	$user = R::findOne('users','login = ?', array($data['login']));
-	if ($user) {
-		if (password_verify($data['password'], $user->password)){
+
+	$query = 'SELECT*FROM users WHERE login="'.$login.'"';
+	$result = mysqli_query($connection, $query); 
+
+	$user = mysqli_fetch_assoc($result); 
+
+	if (!empty($user)) {
+		
+		$saltedPassword =$user['password'];
+
+		if (password_verify ($password ,$saltedPassword)){
 			$_SESSION['logget_user'] = $user;
 		}
 		else{
@@ -156,6 +167,27 @@ if (isset($data['do_login'])){
 		echo '<center><div id="reg_notifice" style="color: red; padding-top: 50px;position: relative;">'.array_shift($errors).'</div></center>';
 	}
 }
+$login = $data['login'];
+$login = strip_tags($login);
+$login = mysqli_real_escape_string($connection, $login);
+
+$email = $data['email'];
+$email = strip_tags($email);
+$email = mysqli_real_escape_string($connection, $email);
+
+$name = $data['name'];
+$name = strip_tags($name);
+$name = mysqli_real_escape_string($connection, $name);
+
+$password = $data['password'];
+$password = strip_tags($password);
+$password = mysqli_real_escape_string($connection, $password);
+
+$password_2 = $data['password_2'];
+$password_2 = strip_tags($password_2);
+$password_2 = mysqli_real_escape_string($connection, $password_2);
+
+$check_login = mysqli_query($connection,"SELECT * FROM `users` WHERE `login`='$login'");
 if (isset($data['do_signup'])) {
 	$errors = array();
 	if (trim($data['login']) == '') {
@@ -173,11 +205,11 @@ if (isset($data['do_signup'])) {
 	if ($data['password_2'] != $data['password']) {
 		$errors[] = 'Подтвердите Пароль!';
 	}
-	if (R::count('users', "login = ?", array($data['login'])) > 0) {
+	if (mysqli_num_rows($check_login) > 0) {
 		$errors[] = 'Пользователь с таким логином уже существует!';
 	}
 	if (empty($errors)) {
-		mysqli_query($connection, "INSERT INTO `users` (`login`,`email`,`name`,`password`) VALUES ('".$data['login']."', '".$data['email']."', '".$data['name']."', '".password_hash($data['password'], PASSWORD_DEFAULT)."')");
+		mysqli_query($connection, "INSERT INTO `users` (`login`,`email`,`name`,`password`) VALUES ('".$login."', '".$email."', '".$name."', '".password_hash($password, PASSWORD_DEFAULT)."')");
 		echo '<center><div id="reg_notifice" style="color: green ;">успешно</div><hr></center>';
 	}
 	else {
