@@ -133,8 +133,8 @@ if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 						<input minlength="7" required="Введите Пароль" type="password" name="password" placeholder="Пароль" value="<? echo @$data['password'] ?>">
 						<input minlength="7" required="Подтвердите Пароль" type="password" name="password_2" placeholder="Подтвердите Пароль" value="<? echo @$data['password_2'] ?>">
 						<input type="submit" name="do_signup" value="Регистрация">
-					</form>	
-				</div>			
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
