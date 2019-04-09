@@ -1,5 +1,5 @@
 $(function() {
-	$("div[id*='vipad']").hide();    
+	$("div[id*='vipad']").hide();
 })();
 
 
